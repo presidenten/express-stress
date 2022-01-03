@@ -8,7 +8,7 @@ const { stress_cpu_with_load, stress_memory_with_load, shutDown } = require('./s
 describe('Stress', () => {
   describe('- stress_cpu_with_load', () => {
     beforeEach(() => {
-      config.maxCPU = 80;
+      config.maxCPU = 90;
       stress.reInit();
     });
 
@@ -74,6 +74,7 @@ describe('Stress', () => {
 
   describe('- stress_memory_with_load', () => {
     beforeEach(() => {
+      config.maxCPU = 90;
       config.maxMemory = 64;
       config.baseMemory = 0;
       config.memoryOffset = 0;
@@ -152,7 +153,7 @@ describe('Stress', () => {
 
   describe('- shutDown', () => {
     beforeEach(() => {
-      config.maxCPU = 80;
+      config.maxCPU = 90;
       config.maxMemory = 64;
       stress.reInit();
     });

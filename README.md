@@ -53,7 +53,7 @@ Environment variables
 - `PORT` - Which port to use
   - `default: 3000`
 - `MAX_CPU` - What cpu percentage is max
-  - `default: 80`
+  - `default: 90`
 - `MAX_Memory` - What is max memory in MB
   - `default: 8192`
 - `BASE_MEMORY` - How much memory in MB is the application already using
