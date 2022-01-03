@@ -45,6 +45,8 @@ Heads up!
 ---------
 Adding memory also eats some cpu. `msync` was selected as memory method since it requires the least amount of CPU. It increases memory usage slowly though, which can both be good or bad depending on what you want.
 
+Also fixed size in MB was selected instead of `%` since `stress-ng` seemed to look at max memory on the docker host instead of the available memory on the container in my tests.
+
 Environment variables
 ---------------------
 
