@@ -10,7 +10,7 @@ app.get('/:load?', ({ params }, res) => {
 });
 
 const server = app.listen(config.port, () => {
-  console.log(`Stress app listening at http://localhost:${port}`);
+  console.log(`Stress app listening at http://localhost:${config.port}`);
 });
 
 const exit = () => {
