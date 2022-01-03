@@ -3,8 +3,14 @@ const app = express();
 const config = require('./config.js');
 const stress = require('./stress.js');
 
-app.get('/:load?', ({ params }, res) => {
+app.get('/cpu/:load?', ({ params }, res) => {
   const result = stress.stress_cpu_with_load(params.load);
+  console.log(result.message);
+  res.status(result.status).send(result.message)
+});
+
+app.get('/memory/:load?', ({ params }, res) => {
+  const result = stress.stress_memory_with_load(params.load);
   console.log(result.message);
   res.status(result.status).send(result.message)
 });
