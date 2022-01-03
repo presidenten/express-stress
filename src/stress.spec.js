@@ -55,13 +55,13 @@ describe('Stress', () => {
       expect(cp.spawn.mock.calls[0][1][3]).toBe(stress.defaultCPULoad);
     });
 
-    if('should set status code 202 for when spawning stress-ng', () => {
+    it('should set status code 202 for when spawning stress-ng', () => {
       const load = 20;
       const result = stress_cpu_with_load(load);
-      expect(result.status).toBe(406);
+      expect(result.status).toBe(202);
     });
 
-    if('should set status code 406 when "full"', () => {
+    it('should set status code 406 when "full"', () => {
       config.maxCPU = 10;
       const load = 20;
       stress_cpu_with_load(load);
@@ -123,13 +123,13 @@ describe('Stress', () => {
       expect(cp.spawn.mock.calls[0][1][3]).toBe(`${stress.defaultMemoryLoad}M`);
     });
 
-    if('should set status code 202 for when spawning stress-ng', () => {
+    it('should set status code 202 for when spawning stress-ng', () => {
       const load = 20;
       const result = stress_memory_with_load(load);
-      expect(result.status).toBe(406);
+      expect(result.status).toBe(202);
     });
 
-    if('should set status code 406 when "full"', () => {
+    it('should set status code 406 when "full"', () => {
       config.maxMemory = 10;
       const load = 20;
       stress_memory_with_load(load);
