@@ -137,6 +137,17 @@ describe('Stress', () => {
       expect(cp.spawn.mock.calls.length).toBe(1);
       expect(result.status).toBe(406);
     });
+
+    it('should set status code 406 when passing max cpu limit', () => {
+      config.maxMemory = 100;
+      const load = 10;
+      stress_memory_with_load(load);
+      stress_memory_with_load(load);
+      stress_memory_with_load(load);
+      const result = stress_memory_with_load(load);
+      expect(cp.spawn.mock.calls.length).toBe(3);
+      expect(result.status).toBe(406);
+    });
   });
 
   describe('- shutDown', () => {

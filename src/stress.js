@@ -44,6 +44,10 @@ module.exports = {
     if (currentMemoryLoad != config.max && currentMemoryLoad + load > config.maxMemory) {
       load = config.maxMemory - currentMemoryLoad;
     }
+    if (currentCPULoad + 30 > config.maxCPU) {
+      const message = `Operation will use too much cpu. Current CPU load is avg ${currentCPULoad}% of max ${config.maxCPU}%.`;
+      return { status: 406, message };
+    }
 
     if (load > 0 && currentMemoryLoad + load <= config.maxMemory) {
       currentMemoryLoad += load;
