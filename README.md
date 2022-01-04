@@ -14,6 +14,12 @@ Start the server
 docker run -d --rm --name stress -p 3000:3000 --cpus=1 --memory=256M presidenten/express-stress
 ```
 
+Endpoints
+---------
+
+- `/cpu/:load?` - Add `load`% load to cpu, `default: 10`
+- `/memory/:load?` - Add `load`MB load to memory, `default: 32`
+
 ### Test ###
 Test with two terminal windows.
 
@@ -56,10 +62,12 @@ Environment variables
 - `PORT` - Which port to use
   - `default: 3000`
 - `MAX_CPU` - What cpu percentage is max
-  - `default: 80`
-- `MAX_Memory` - What is max memory in MB
+  - `default: 90`
+- `MAX_MEMORY` - What is max memory in MB
   - `default: 8192`
 - `BASE_MEMORY` - How much memory in MB is the application already using
   - `default: 11`
 - `MEMORY_OFFSET` - Offset memory allocation by this amount
   - `default: 4`
+- `MSYNC_CPU` - How much cpu does each msync process hog
+  - `default: 30`

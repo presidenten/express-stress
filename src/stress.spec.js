@@ -69,6 +69,13 @@ describe('Stress', () => {
       expect(cp.spawn.mock.calls.length).toBe(1);
       expect(result.status).toBe(406);
     });
+
+    it('should handle config as strings', () => {
+      config.maxCPU = '90';
+      stress.reInit();
+      const result = stress_cpu_with_load();
+      expect(result.status).toBe(202);
+    });
   });
 
 
@@ -148,6 +155,25 @@ describe('Stress', () => {
       const result = stress_memory_with_load(load);
       expect(cp.spawn.mock.calls.length).toBe(3);
       expect(result.status).toBe(406);
+    });
+
+    it('should handle memory offset', () => {
+      config.memoryOffset = 2;
+      stress.reInit();
+      const result = stress_memory_with_load(12);
+      expect(cp.spawn.mock.calls[0][1][3]).toBe('10M');
+      expect(result.status).toBe(202);
+    });
+
+    it('should handle config as strings', () => {
+      config.maxMemory = '256';
+      config.baseMemory = '20';
+      stress.reInit();
+      stress_memory_with_load();
+      expect(cp.spawn.mock.calls[0][1][3]).toBe('32M');
+      const result = stress_memory_with_load('10');
+      expect(cp.spawn.mock.calls[1][1][3]).toBe('10M');
+      expect(result.status).toBe(202);
     });
   });
 
