@@ -22,6 +22,10 @@ app.get('/clear-load', ({ params }, res) => {
   res.status(200).send(message)
 });
 
+app.get('/health', (_, res) => {
+  res.status(200).send('healthy');
+});
+
 const server = app.listen(config.port, () => {
   console.log(`Stress app listening at http://localhost:${config.port}`);
 });
