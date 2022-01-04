@@ -6,20 +6,20 @@ const stress = require('./stress.js');
 app.get('/cpu/:load?', ({ params }, res) => {
   const result = stress.stress_cpu_with_load(params.load);
   console.log(`host="${process.env.HOSTNAME}" msg="result.message"`);
-  res.status(result.status).send(result.message)
+  res.status(result.status).send({ host: process.env.HOSTNAME, message: result.message });
 });
 
 app.get('/memory/:load?', ({ params }, res) => {
   const result = stress.stress_memory_with_load(params.load);
   console.log(`host="${process.env.HOSTNAME}" msg="result.message"`);
-  res.status(result.status).send(result.message)
+  res.status(result.status).send({ host: process.env.HOSTNAME, message: result.message });
 });
 
 app.get('/clear-load', ({ params }, res) => {
   stress.clearLoad();
-  const message = 'Cleared all load'
+  const message = 'Cleared all load';
   console.log(`host="${process.env.HOSTNAME}" msg="message"`);
-  res.status(200).send(message)
+  res.status(200).send({ host: process.env.HOSTNAME, message: message });
 });
 
 app.get('/health', (_, res) => {
