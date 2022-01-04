@@ -15,13 +15,20 @@ app.get('/memory/:load?', ({ params }, res) => {
   res.status(result.status).send(result.message)
 });
 
+app.get('/clear-load', ({ params }, res) => {
+  stress.clearLoad();
+  const message = 'Cleared all load'
+  console.log(message);
+  res.status(200).send(message)
+});
+
 const server = app.listen(config.port, () => {
   console.log(`Stress app listening at http://localhost:${config.port}`);
 });
 
 const exit = () => {
   console.info('Shutting down...');
-  stress.shutDown();
+  stress.clearLoad();
   server.close(err => process.exit(err ? 1 : 0));
 }
 

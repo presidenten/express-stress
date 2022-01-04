@@ -19,6 +19,7 @@ Endpoints
 
 - `/cpu/:load?` - Add `load`% load to cpu, `default: 10`
 - `/memory/:load?` - Add `load`MB load to memory, `default: 32`
+- `/clear-load` - Clear all load
 
 ### Test ###
 Test with two terminal windows.

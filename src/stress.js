@@ -10,12 +10,6 @@ module.exports = {
   defaultCPULoad,
   defaultMemoryLoad,
 
-  reInit() {
-    this.shutDown();
-    currentCPULoad = 0;
-    currentMemoryLoad = +config.baseMemory;
-  },
-
   stress_cpu_with_load(requested_load = defaultCPULoad) {
     let load = +requested_load || defaultCPULoad;
 
@@ -64,7 +58,9 @@ module.exports = {
     }
   },
 
-  shutDown() {
+  clearLoad() {
+    currentCPULoad = 0;
+    currentMemoryLoad = +config.baseMemory;
     let p
     do {
       p = processes.pop();
