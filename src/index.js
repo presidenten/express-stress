@@ -20,7 +20,7 @@ app.get('/memory/:load?', ({ params }, res) => {
 app.get('/clear-load', ({ params }, res) => {
   stress.clearLoad();
   const message = `host="${process.env.HOSTNAME}" msg="Cleared all load"`;
-  console.lo(message);
+  console.log(message);
   res.status(200).send(message);
 });
 
